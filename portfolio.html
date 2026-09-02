@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jagadesh Baddela — Finance & Data Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14213D;
+    --ink-soft:#2C3B57;
+    --paper:#F8F7F3;
+    --paper-alt:#EFEBE0;
+    --brass:#B8863B;
+    --brass-deep:#8C6423;
+    --line:#D9D4C8;
+    --slate:#5B6472;
+    --white:#FFFFFF;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  h1,h2,h3{
+    font-family:'Source Serif 4', serif;
+    margin:0;
+    color:var(--ink);
+  }
+
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--brass);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:880px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(20,33,61,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(184,134,59,0.35);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+    max-width:960px;
+  }
+  .nav-mark{
+    font-family:'Source Serif 4', serif;
+    font-weight:600; font-size:1.05rem;
+    color:var(--white); text-decoration:none;
+    letter-spacing:0.01em;
+  }
+  .nav-links{
+    display:flex; gap:28px; list-style:none; margin:0; padding:0;
+  }
+  .nav-links a{
+    color:#D8DCE6; text-decoration:none; font-size:0.92rem;
+    padding-bottom:3px; border-bottom:1px solid transparent;
+    transition:border-color 0.2s ease, color 0.2s ease;
+  }
+  .nav-links a:hover{ color:var(--brass); border-bottom-color:var(--brass); }
+  .nav-toggle{ display:none; }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    background:var(--ink);
+    color:var(--white);
+    overflow:hidden;
+    padding:88px 0 76px;
+  }
+  .hero .wrap{ max-width:960px; position:relative; z-index:2; }
+  .hero-trace{
+    position:absolute; inset:0; z-index:1; opacity:0.5;
+  }
+  @keyframes drift-a{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-9px); }
+  }
+  @keyframes drift-b{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(7px); }
+  }
+  .hero-trace .line-gold{
+    animation:drift-a 7s ease-in-out infinite;
+  }
+  .hero-trace .line-navy{
+    animation:drift-b 9s ease-in-out infinite;
+  }
+  .eyebrow-role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    color:var(--brass);
+    letter-spacing:0.03em;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    font-weight:600;
+    color:var(--white);
+    max-width:11ch;
+  }
+  .hero .role-line{
+    font-size:1.2rem;
+    color:#C7CEDC;
+    margin-top:14px;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:500;
+  }
+  .hero p.bio{
+    max-width:56ch;
+    color:#B7BFCE;
+    margin-top:22px;
+    font-size:1.02rem;
+  }
+  .hero-contact{
+    margin-top:38px;
+    display:flex; flex-wrap:wrap; gap:0;
+    border-top:1px solid rgba(184,134,59,0.35);
+    padding-top:22px;
+  }
+  .hero-contact a, .hero-contact span{
+    color:#DCE1EA; text-decoration:none;
+    font-size:0.92rem; font-family:'IBM Plex Mono', monospace;
+    padding-right:24px; margin-right:24px;
+    border-right:1px solid rgba(255,255,255,0.15);
+  }
+  .hero-contact a:last-child, .hero-contact span:last-child{
+    border-right:none; margin-right:0; padding-right:0;
+  }
+  .hero-contact a:hover{ color:var(--brass); }
+
+  /* SECTION SHELL */
+  section{ padding:64px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .section-head{
+    display:flex; align-items:baseline; gap:14px;
+    margin-bottom:34px;
+  }
+  .section-head .tick{
+    width:22px; height:2px; background:var(--brass); flex:none;
+  }
+  .section-head h2{
+    font-size:1.5rem; font-weight:600;
+  }
+
+  /* SUMMARY */
+  .summary p{
+    max-width:64ch; font-size:1.04rem; color:var(--ink-soft);
+  }
+  .summary-stats{
+    display:grid; grid-template-columns:repeat(3, 1fr);
+    gap:24px; margin-top:36px;
+  }
+  .stat{
+    border-top:2px solid var(--brass);
+    padding-top:12px;
+  }
+  .stat .num{
+    font-family:'Source Serif 4', serif; font-size:1.7rem; font-weight:600;
+    color:var(--ink);
+  }
+  .stat .label{
+    font-size:0.86rem; color:var(--slate); margin-top:4px;
+  }
+
+  /* EXPERIENCE */
+  .exp-entry{
+    display:grid; grid-template-columns:200px 1fr; gap:28px;
+    padding:26px 0; border-top:1px solid var(--line);
+  }
+  .exp-entry:first-of-type{ border-top:none; padding-top:0; }
+  .exp-meta .company{
+    font-family:'Source Serif 4', serif; font-weight:600; font-size:1.08rem;
+  }
+  .exp-meta .duration{
+    font-family:'IBM Plex Mono', monospace; font-size:0.82rem;
+    color:var(--brass-deep); margin-top:6px;
+  }
+  .exp-role{
+    font-weight:500; margin-bottom:10px; color:var(--ink-soft);
+  }
+  .exp-entry ul{ margin:0; padding-left:18px; color:var(--ink-soft); }
+  .exp-entry li{ margin-bottom:8px; font-size:0.98rem; }
+
+  /* SKILLS */
+  .skills-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:36px 40px;
+  }
+  .skill-group .group-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem; color:var(--brass-deep);
+    padding-bottom:8px; border-bottom:1px solid var(--line);
+    margin-bottom:14px;
+  }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-size:0.88rem; padding:6px 12px;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    background:var(--white);
+  }
+
+  /* PROJECT */
+  .project-card{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px;
+    align-items:center;
+    background:var(--paper-alt);
+    border-left:3px solid var(--brass);
+    padding:34px;
+  }
+  .project-card h3{ font-size:1.3rem; margin-bottom:12px; }
+  .project-card p{ color:var(--ink-soft); font-size:0.98rem; }
+  .project-tools{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+  .project-tools span{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
+    color:var(--brass-deep); border:1px solid var(--brass); padding:4px 10px;
+  }
+  .mini-chart{ width:100%; height:auto; }
+  .mini-chart .bar{
+    transform-box:fill-box;
+    transform-origin:bottom;
+    animation:drift-a 4.5s ease-in-out infinite;
+  }
+  .mini-chart .bar:nth-child(3){ animation-delay:0.3s; animation-duration:5s; }
+  .mini-chart .bar:nth-child(4){ animation-delay:0.6s; animation-duration:4s; }
+  .mini-chart .bar:nth-child(5){ animation-delay:0.15s; animation-duration:5.5s; }
+  .mini-chart .bar:nth-child(6){ animation-delay:0.45s; animation-duration:4.2s; }
+  .mini-chart .bar:nth-child(7){ animation-delay:0.25s; animation-duration:4.8s; }
+
+  /* EDUCATION + CERTS */
+  .two-col{
+    display:grid; grid-template-columns:1.3fr 0.7fr; gap:48px;
+  }
+  .edu-entry{ padding:14px 0; border-top:1px solid var(--line); }
+  .edu-entry:first-child{ border-top:none; padding-top:0; }
+  .edu-entry .degree{ font-weight:600; font-family:'Source Serif 4', serif; font-size:1.02rem; }
+  .edu-entry .school{ color:var(--slate); font-size:0.92rem; margin-top:3px; }
+  .cert-list{ list-style:none; margin:0; padding:0; }
+  .cert-list li{
+    padding:10px 0; border-top:1px solid var(--line);
+    font-size:0.95rem; color:var(--ink-soft);
+  }
+  .cert-list li:first-child{ border-top:none; padding-top:0; }
+
+  /* CONTACT / FOOTER */
+  .contact-cta{
+    background:var(--ink); color:var(--white);
+    padding:70px 0; border-bottom:none;
+  }
+  .contact-cta h2{ color:var(--white); font-size:1.9rem; max-width:16ch; }
+  .contact-cta p{ color:#B7BFCE; max-width:48ch; margin-top:14px; }
+  .cta-row{ display:flex; gap:16px; margin-top:32px; flex-wrap:wrap; }
+  .btn-brass{
+    display:inline-block; background:var(--brass); color:var(--ink);
+    text-decoration:none; padding:13px 26px; font-weight:600;
+    font-size:0.95rem; transition:background 0.2s ease;
+  }
+  .btn-brass:hover{ background:#CE9B4C; }
+  .btn-outline{
+    display:inline-block; border:1px solid rgba(255,255,255,0.4);
+    color:var(--white); text-decoration:none; padding:13px 26px;
+    font-size:0.95rem; transition:border-color 0.2s ease, color 0.2s ease;
+  }
+  .btn-outline:hover{ border-color:var(--brass); color:var(--brass); }
+
+  footer{
+    background:var(--ink); color:#8A93A6;
+    text-align:center; font-size:0.82rem; padding:22px 0 34px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  @media (max-width: 720px){
+    .wrap{ padding:0 22px; }
+    .nav-links{ display:none; }
+    .exp-entry{ grid-template-columns:1fr; }
+    .skills-grid{ grid-template-columns:1fr; }
+    .two-col{ grid-template-columns:1fr; }
+    .project-card{ grid-template-columns:1fr; padding:26px; }
+    .summary-stats{ grid-template-columns:1fr 1fr; }
+    .hero{ padding:64px 0 52px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="nav-mark" href="#top">JB</a>
+    <ul class="nav-links">
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#project">Project</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="hero-trace" viewBox="0 0 960 340" preserveAspectRatio="none" aria-hidden="true">
+    <polyline class="line-gold" points="0,300 90,270 170,290 260,220 340,240 430,150 520,180 610,90 700,130 790,60 880,95 960,40"
+      fill="none" stroke="#B8863B" stroke-width="2" opacity="0.55"/>
+    <polyline class="line-navy" points="0,320 90,310 170,318 260,295 340,300 430,265 520,275 610,235 700,250 790,210 880,222 960,195"
+      fill="none" stroke="#3A4A6B" stroke-width="1.5" opacity="0.6"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow-role">Finance &amp; Data Analytics</div>
+    <h1>Jagadesh Baddela</h1>
+    <div class="role-line">Turning financial records and raw data into decisions people can act on.</div>
+    <p class="bio">MBA candidate in Finance with Business Analytics, with hands-on experience in GST documentation, financial statement review and accounting support at a CA firm — now building on that foundation with Python, SQL and Power BI to move into data-driven finance and analytics roles.</p>
+    <div class="hero-contact">
+      <a href="mailto:jagadeshd22ba031@gmail.com">jagadeshd22ba031@gmail.com</a>
+      <a href="tel:+919840780891">+91 98407 80891</a>
+      <span>Chennai, Tamil Nadu</span>
+    </div>
+  </div>
+</header>
+
+<section id="summary" class="summary">
+  <div class="wrap">
+    <div class="section-head"><span class="tick"></span><h2>Summary</h2></div>
+    <p>I started on the accounting and taxation side — reviewing financial statements, compiling GST records, keeping books accurate and audit-ready. Ongoing Data Analytics training is extending that into Python, SQL and Power BI, so I can not only maintain the numbers but explore and present them. I'm looking for an entry-level role in finance, accounting, business operations or data analytics where I can apply both sides of that skill set.</p>
+    <div class="summary-stats">
+      <div class="stat"><div class="num">MBA</div><div class="label">Finance with Business Analytics</div></div>
+      <div class="stat"><div class="num">GST</div><div class="label">& taxation documentation</div></div>
+      <div class="stat"><div class="num">3</div><div class="label">Analytics tools in active use</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head"><span class="tick"></span><h2>Experience</h2></div>
+    <div class="exp-entry">
+      <div class="exp-meta">
+        <div class="company">CA Firm</div>
+        <div class="duration">Accounts &amp; Taxation Support</div>
+      </div>
+      <div>
+        <div class="exp-role">Finance &amp; Accounting Exposure</div>
+        <ul>
+          <li>Assisted with GST-related activities, including documentation, data compilation and review of GST records.</li>
+          <li>Supported tax-related work by organizing financial information and maintaining compliance documents.</li>
+          <li>Reviewed financial statements and supporting records to catch missing information and inconsistencies.</li>
+          <li>Maintained and organized accounting records, invoices, vouchers and other financial documents.</li>
+          <li>Worked with financial data in spreadsheets to compile information for accounting and taxation activities.</li>
+          <li>Supported day-to-day finance operations with accuracy, confidentiality and on-time delivery.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head"><span class="tick"></span><h2>Skills</h2></div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="group-title">DATA &amp; ANALYTICS</div>
+        <div class="chip-row">
+          <span class="chip">Python</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">Power BI</span>
+          <span class="chip">MS Excel</span>
+          <span class="chip">SPSS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="group-title">FINANCE &amp; ACCOUNTING</div>
+        <div class="chip-row">
+          <span class="chip">GST &amp; Taxation</span>
+          <span class="chip">Financial Statement Review</span>
+          <span class="chip">Tally Prime with GST</span>
+          <span class="chip">Billing &amp; Documentation</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="group-title">RECORD MANAGEMENT</div>
+        <div class="chip-row">
+          <span class="chip">Data Entry &amp; Organization</span>
+          <span class="chip">Attention to Detail</span>
+          <span class="chip">Problem Solving</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="group-title">WORKING STYLE</div>
+        <div class="chip-row">
+          <span class="chip">Communication</span>
+          <span class="chip">Teamwork</span>
+          <span class="chip">Time Management</span>
+          <span class="chip">Adaptability</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="wrap">
+    <div class="section-head"><span class="tick"></span><h2>Featured Project</h2></div>
+    <div class="project-card">
+      <div>
+        <h3>Sales &amp; Finance Dashboard</h3>
+        <p>Built an interactive dashboard consolidating sales and financial data into a single view, designed to help track performance trends and support faster, clearer business decisions.</p>
+        <div class="project-tools">
+          <span>Power BI</span>
+          <span>Excel</span>
+          <span>Data Modeling</span>
+        </div>
+      </div>
+      <svg class="mini-chart" viewBox="0 0 260 160" role="img" aria-label="Illustrative bar chart representing the sales and finance dashboard">
+        <line x1="20" y1="130" x2="240" y2="130" stroke="#D9D4C8" stroke-width="1"/>
+        <rect class="bar" x="30" y="90" width="24" height="40" fill="#14213D"/>
+        <rect class="bar" x="66" y="60" width="24" height="70" fill="#B8863B"/>
+        <rect class="bar" x="102" y="100" width="24" height="30" fill="#14213D"/>
+        <rect class="bar" x="138" y="40" width="24" height="90" fill="#B8863B"/>
+        <rect class="bar" x="174" y="75" width="24" height="55" fill="#14213D"/>
+        <rect class="bar" x="210" y="20" width="24" height="110" fill="#8C6423"/>
+        <polyline points="30,95 78,70 114,88 150,52 186,80 222,30" fill="none" stroke="#2C3B57" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head"><span class="tick"></span><h2>Education &amp; Certifications</h2></div>
+    <div class="two-col">
+      <div>
+        <div class="edu-entry">
+          <div class="degree">MBA — Finance with Business Analytics</div>
+          <div class="school">St. Joseph's College of Engineering</div>
+        </div>
+        <div class="edu-entry">
+          <div class="degree">BBA</div>
+          <div class="school">Patrician College of Arts and Science</div>
+        </div>
+        <div class="edu-entry">
+          <div class="degree">HSC</div>
+          <div class="school">CSI Bishop Corrie Anglo Indian Higher Secondary School</div>
+        </div>
+      </div>
+      <ul class="cert-list">
+        <li>Tally Prime with GST</li>
+        <li>Stock Market</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact-cta" id="contact">
+  <div class="wrap">
+    <h2>Let's talk finance, data or where they meet.</h2>
+    <p>Open to entry-level roles in finance, accounting, business operations or data analytics — happy to walk through my work in more detail.</p>
+    <div class="cta-row">
+      <a class="btn-brass" href="mailto:jagadeshd22ba031@gmail.com">Email me</a>
+      <a class="btn-outline" href="tel:+919840780891">Call +91 98407 80891</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Jagadesh Baddela &middot; Chennai, Tamil Nadu
+</footer>
+
+</body>
+</html>
